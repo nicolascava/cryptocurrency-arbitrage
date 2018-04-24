@@ -1,0 +1,94 @@
+{
+  "name": "cryptocurrency-arbitrage",
+  "version": "1.0.0",
+  "description": "Make profits by buying and selling on two or more exchanges simultaneously",
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bitfinex-api-node": "^2.0.0-beta",
+    "chalk": "^2.3.0",
+    "express": "^4.16.2",
+    "js-combinatorics": "^0.5.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "node-binance-api": "^0.4.16",
+    "pako": "^1.0.6",
+    "poloniex-api-node": "^1.8.1",
+    "request": "^2.85.0",
+    "winston": "^2.4.0",
+    "ws": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "nodemon": "^1.13.3"
+  },
+  "scripts": {
+    "start": "FORCE_COLOR=1 nodemon ./src --exec babel-node --no-colors",
+    "start-prod": "babel-node ./src",
+    "build": "babel ./src --out-dir ./build",
+    "deploy": "gcloud app deploy ./app.yml --stop-previous-version --promote --quiet",
+    "lint": "eslint ./ --config ./package.json --ignore-path ./.eslintignore"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "*.json"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "rules": {
+      "react/jsx-filename-extension": [
+        "error",
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "max-len": [
+        2,
+        100,
+        4,
+        {
+          "ignorePattern": "\\s*<"
+        }
+      ]
+    },
+    "globals": {
+      "document": true,
+      "window": true,
+      "navigator": true,
+      "URL": true,
+      "fetch": true,
+      "describe": true,
+      "it": true,
+      "felfire": true
+    }
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0"
+    ],
+    "plugins": [
+      [
+        "transform-runtime",
+        {
+          "polyfill": true,
+          "regenerator": true
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+version: "2"
+services:
+  base:
+    build:
+      dockerfile: ./Dockerfile.development
+      context: ./
+    working_dir: /usr/src/app
+    volumes:
+      - ./src:/usr/src/app/src
+    environment:
+      SUPPORTED_EXCHANGES: Poloniex, Bitfinex
+  prod:
+    extends:
+      service: base
+    container_name: prod
+    ports:
+      - 3000:3000
+    command: yarn start-prod
+    environment:
+      THROTTLE_LOGS: "false"
+      ONLY_OUTPUT_PROFITS: "true"
+  test1:
+    extends:
+      service: base
+    container_name: test1
+    ports:
+      - 3001:3000
+    command: yarn start
+    environment:
+      DISABLE_TRADING: "true"
+      USE_4_NODES: "true"
