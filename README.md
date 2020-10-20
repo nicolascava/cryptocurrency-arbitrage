@@ -2,6 +2,8 @@
 
 > Make profits by buying and selling on two or more exchanges simultaneously
 
+> ❌ Sorry, but this library is no longer maintained. Please find an alternative.
+
 ## Summary
 
 This project is a prototype, be cautious when using it in production.
@@ -12,7 +14,7 @@ Cryptocurrency Arbitrage is a Node.js service that performs arbitrage techniques
 
 The MIT License (MIT)
 
-Copyright (c) 2018 Nicolas Cava
+Copyright (c) 2020 Nicolas Cava
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
